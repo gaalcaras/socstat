@@ -1,0 +1,19 @@
+Package: socstat
+Type: Package
+Title: Teaching R and Statistics for the Social Sciences
+Version: 0.1.0
+Author: Gabriel Alcaras
+Maintainer: Gabriel Alcaras <gaalcaras@posteo.net>
+Description: A simple package to distribute data, tutorials and other
+    materials when teaching R and statistics to students.
+License: GNU GPLv3
+Encoding: UTF-8
+LazyData: true
+Imports:
+    learnr, tidyverse
+Suggests: 
+    knitr, rlang
+VignetteBuilder: knitr
+Depends: 
+    R (>= 2.10)
+RoxygenNote: 7.1.1

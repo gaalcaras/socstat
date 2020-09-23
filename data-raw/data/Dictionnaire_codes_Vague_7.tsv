@@ -1,0 +1,676 @@
+Question	Code	Signification
+JOURV7	1	Mardi 26 Mai
+	2	Mercredi 27 Mai
+	3	Jeudi 28 Mai
+	4	Vendredi 29 Mai
+	5	Samedi 30 Mai
+	6	Dimanche 31 Mai
+DEVICE	1	Ordinateur
+	2	Smartphone
+	3	Tablette
+	4	SmartTV
+	5	Aucun
+SEXE	1	Homme
+	2	Femme
+AGE2	1	18 à 24 ans
+	2	25 à 29 ans
+	3	30 à 34 ans
+	4	35 à 39 ans
+	5	40 à 44 ans
+	6	45 à 49 ans
+	7	50 à 54 ans
+	8	55 à 59 ans
+	9	60 à 64 ans
+	10	65 ans et plus
+DEP	1	Ain
+	2	Aisne
+	3	Allier
+	4	Alpes-de-Haute-Provence
+	5	Hautes-Alpes
+	6	Alpes-Maritimes
+	7	Ardèche
+	8	Ardennes
+	9	Ariège
+	10	Aube
+	11	Aude
+	12	Aveyron
+	13	Bouches-du-Rhône
+	14	Calvados
+	15	Cantal
+	16	Charente
+	17	Charente-Maritime
+	18	Cher
+	19	Corrèze
+	20	Corse-du-Sud
+	21	Côte-d'Or
+	22	Côtes-d'Armor
+	23	Creuse
+	24	Dordogne
+	25	Doubs
+	26	Drôme
+	27	Eure
+	28	Eure-et-Loir
+	29	Finistère
+	30	Gard
+	31	Haute-Garonne
+	32	Gers
+	33	Gironde
+	34	Hérault
+	35	Ille-et-Vilaine
+	36	Indre
+	37	Indre-et-Loire
+	38	Isère
+	39	Jura
+	40	Landes
+	41	Loir-et-Cher
+	42	Loire
+	43	Haute-Loire
+	44	Loire-Atlantique
+	45	Loiret
+	46	Lot
+	47	Lot-et-Garonne
+	48	Lozère
+	49	Maine-et-Loire
+	50	Manche
+	51	Marne
+	52	Haute-Marne
+	53	Mayenne
+	54	Meurthe-et-Moselle
+	55	Meuse
+	56	Morbihan
+	57	Moselle
+	58	Nièvre
+	59	Nord
+	60	Oise
+	61	Orne
+	62	Pas-de-Calais
+	63	Puy-de-Dôme
+	64	Pyrénées-Atlantiques
+	65	Hautes-Pyrénées
+	66	Pyrénées-Orientales
+	67	Bas-Rhin
+	68	Haut-Rhin
+	69	Rhône
+	70	Haute-Saône
+	71	Saône-et-Loire
+	72	Sarthe
+	73	Savoie
+	74	Haute-Savoie
+	75	Paris
+	76	Seine-Maritime
+	77	Seine-et-Marne
+	78	Yvelines
+	79	Deux-Sèvres
+	80	Somme
+	81	Tarn
+	82	Tarn-et-Garonne
+	83	Var
+	84	Vaucluse
+	85	Vendée
+	86	Vienne
+	87	Haute-Vienne
+	88	Vosges
+	89	Yonne
+	90	Territoire de Belfort
+	91	Essonne
+	92	Hauts-de-Seine
+	93	Seine-Saint-Denis
+	94	Val-de-Marne
+	95	Val-d'Oise
+	96	Haute-Corse
+REG12	1	Ile-de-France
+	2	Centre-Val de Loire
+	3	Bourgogne-Franche-Comté
+	4	Normandie
+	5	Hauts-de-France
+	6	Grand-Est
+	7	Pays de la Loire
+	8	Bretagne
+	9	Nouvelle Aquitaine
+	10	Occitanie
+	11	Auvergne-Rhône-Alpes
+	12	PACA + Corse
+AGGLO5	1	Rural
+	2	2.000 à 19.999 hab.
+	3	20.000 à 99.999 hab.
+	4	100.000 hab. et plus
+	5	Agglomération de Paris
+EMP	1	Salarié(e) à plein temps
+	2	Salarié(e) à temps partiel
+	3	Travaille à mon compte
+	4	Ne travaille pas actuellement, mais en recherche d'emploi
+	5	Ne travaille pas actuellement et ne recherche pas d’emploi / en incapacité de travail
+	6	Homme/femme au foyer
+	7	Retraité(e)
+	8	Etudiant(e)/élève
+PCSI	1	Agriculteurs exploitants
+	2	Professions Indépendantes
+	3	Cadres Supérieurs
+	4	Professions intermédiaires
+	5	Employés
+	6	Ouvriers
+	7	Retraités
+	8	Inactifs
+MAR	1	Célibataire
+	2	En union libre
+	3	Marié(e)
+	4	Séparé(e)
+	5	Divorcé(e)
+	6	Veuf/ve
+	7	Pacsé(e)
+A0_0	1	L’épidémie de coronavirus
+	2	Le pouvoir d’achat
+	3	Le changement climatique
+	4	Les inégalités sociales
+	5	Le chômage
+	6	Les déficits publics et de la dette de l'Etat
+	7	L’éducation
+	8	Le système de santé
+	9	L’insécurité
+	10	Le terrorisme
+	11	(NR)
+A0_1	1	L’épidémie de coronavirus
+	2	Le pouvoir d’achat
+	3	Le changement climatique
+	4	Les inégalités sociales
+	5	Le chômage
+	6	Les déficits publics et de la dette de l'Etat
+	7	L’éducation
+	8	Le système de santé
+	9	L’insécurité
+	10	Le terrorisme
+	11	(NR)
+A0_2	1	L’épidémie de coronavirus
+	2	Le pouvoir d’achat
+	3	Le changement climatique
+	4	Les inégalités sociales
+	5	Le chômage
+	6	Les déficits publics et de la dette de l'Etat
+	7	L’éducation
+	8	Le système de santé
+	9	L’insécurité
+	10	Le terrorisme
+	11	(NR)
+A1	1	Oui
+	2	Non
+	3	(NR)
+A2	1	J’ai été diagnostiqué positif par un test de dépistage
+	2	J’ai ou j’ai eu les symptômes caractéristiques de la maladie et j’ai contacté un médecin
+	3	J’ai ou j’ai eu les symptômes caractéristiques de la maladie mais je n’ai pas contacté de médecin
+	4	Je n’ai pas eu de symptômes caractéristiques de la maladie mais j’ai été en contact proche avec au moins une personne diagnostiquée positive par un test de dépistage
+	5	Je n’ai pas eu de symptômes caractéristiques de la maladie mais j’ai été en contact proche avec au moins une personne qui pense avoir été infectée par le coronavirus
+	6	Je ne connais pas assez bien les symptômes pour répondre
+	7	(NR)
+A2BIS	1	J'ai été diagnostiqué négatif par un test de dépistage
+	2	Je n'ai pas eu de symptômes
+	3	J'ai eu des symptômes mais mon médecin m'a dit que ce n'était pas le coronavirus
+	4	J'ai eu des symptômes mais j'ai considéré qu'il ne s'agissait pas du coronavirus, sans en parler à mon médecin
+	5	(NR)
+A3_0	1	Oui, j’ai la certitude d’avoir été en contact avec au moins une personne au sein de mon foyer
+	2	Oui, j’ai la certitude d’avoir été en contact avec au moins une personne en dehors de mon foyer
+	3	Non, je n’ai pas la certitude d’avoir été en contact avec au moins une personne
+	4	(NR)
+A3_1	1	Oui, j’ai la certitude d’avoir été en contact avec au moins une personne au sein de mon foyer
+	2	Oui, j’ai la certitude d’avoir été en contact avec au moins une personne en dehors de mon foyer
+	3	Non, je n’ai pas la certitude d’avoir été en contact avec au moins une personne
+	4	(NR)
+A3BIS	1	Oui
+	2	Non
+	3	(NR)
+A4	1	Oui
+	2	Non
+	3	(NR)
+A6_0	1	Oui
+	2	Non
+	3	(NR)
+A6_1	1	Oui
+	2	Non
+	3	(NR)
+A6_2	1	Oui
+	2	Non
+	3	(NR)
+A6_3	1	Oui
+	2	Non
+	3	(NR)
+A6_4	1	Oui
+	2	Non
+	3	(NR)
+A6_5	1	Oui
+	2	Non
+	3	(NR)
+A6_6	1	Oui
+	2	Non
+	3	(NR)
+A6_7	1	Oui
+	2	Non
+	3	(NR)
+A6_8	1	Oui
+	2	Non
+	3	(NR)
+A6_9	1	Oui
+	2	Non
+	3	(NR)
+A6_10	1	Oui
+	2	Non
+	3	(NR)
+B2_0	1	Tout le temps
+	2	Souvent
+	3	Parfois
+	4	Rarement
+	5	Jamais même si je pourrais le faire
+	6	Jamais car je n’ai pas la possibilité de le faire
+	7	(NR)
+B2_1	1	Tout le temps
+	2	Souvent
+	3	Parfois
+	4	Rarement
+	5	Jamais même si je pourrais le faire
+	6	Jamais car je n’ai pas la possibilité de le faire
+	7	(NR)
+B2_2	1	Tout le temps
+	2	Souvent
+	3	Parfois
+	4	Rarement
+	5	Jamais même si je pourrais le faire
+	6	Jamais car je n’ai pas la possibilité de le faire
+	7	(NR)
+B2_3	1	Tout le temps
+	2	Souvent
+	3	Parfois
+	4	Rarement
+	5	Jamais même si je pourrais le faire
+	6	Jamais car je n’ai pas la possibilité de le faire
+	7	(NR)
+B2_4	1	Tout le temps
+	2	Souvent
+	3	Parfois
+	4	Rarement
+	5	Jamais même si je pourrais le faire
+	6	Jamais car je n’ai pas la possibilité de le faire
+	7	(NR)
+B2_5	1	Tout le temps
+	2	Souvent
+	3	Parfois
+	4	Rarement
+	5	Jamais même si je pourrais le faire
+	6	Jamais car je n’ai pas la possibilité de le faire
+	7	(NR)
+B2_6	1	Tout le temps
+	2	Souvent
+	3	Parfois
+	4	Rarement
+	5	Jamais même si je pourrais le faire
+	6	Jamais car je n’ai pas la possibilité de le faire
+	7	(NR)
+B2_7	1	Tout le temps
+	2	Souvent
+	3	Parfois
+	4	Rarement
+	5	Jamais même si je pourrais le faire
+	6	Jamais car je n’ai pas la possibilité de le faire
+	7	(NR)
+B2_8	1	Tout le temps
+	2	Souvent
+	3	Parfois
+	4	Rarement
+	5	Jamais même si je pourrais le faire
+	6	Jamais car je n’ai pas la possibilité de le faire
+	7	(NR)
+C1C2	1	Insuffisance pondérale (inférieur à 18.5)
+	2	Poids normal (entre 18.5 et 25)
+	3	Surpoids (entre 25 et 30)
+	4	Obésité (supérieur à 30)
+	5	(NR)
+C3	1	Oui
+	2	Non
+	3	(NR)
+C4_0	1	Oui
+	2	Non
+	3	Nsp
+C4_1	1	Oui
+	2	Non
+	3	Nsp
+C4_2	1	Oui
+	2	Non
+	3	Nsp
+C4_3	1	Oui
+	2	Non
+	3	Nsp
+C4_4	1	Oui
+	2	Non
+	3	Nsp
+C4_5	1	Oui
+	2	Non
+	3	Nsp
+C4_6	1	Oui
+	2	Non
+	3	Nsp
+C4_7	1	Oui
+	2	Non
+	3	Nsp
+C51	1	Presque tous les jours
+	2	Plus de la moitié des jours
+	3	Plusieurs jours
+	4	Jamais
+	5	(NR)
+C52	1	Presque tous les jours
+	2	Plus de la moitié des jours
+	3	Plusieurs jours
+	4	Jamais
+	5	(NR)
+C53	1	Presque tous les jours
+	2	Plus de la moitié des jours
+	3	Plusieurs jours
+	4	Jamais
+	5	(NR)
+C54	1	Presque tous les jours
+	2	Plus de la moitié des jours
+	3	Plusieurs jours
+	4	Jamais
+	5	(NR)
+C6_0	1	Je travaille hors de mon domicile
+	2	Je travaille à domicile (comme d’habitude ou comme je le faisais déjà avant le confinement)
+	3	Je travaille à distance (télétravail)
+	4	Je suis en arrêt maladie
+	5	Je suis en chômage partiel
+	6	Je suis en congé
+	7	(NR)
+	8	Je travaille dans le secteur de la santé
+C6_1	1	Je travaille hors de mon domicile
+	2	Je travaille à domicile (comme d’habitude ou comme je le faisais déjà avant le confinement)
+	3	Je travaille à distance (télétravail)
+	4	Je suis en arrêt maladie
+	5	Je suis en chômage partiel
+	6	Je suis en congé
+	7	(NR)
+	8	Je travaille dans le secteur de la santé
+C6_2	1	Je travaille hors de mon domicile
+	2	Je travaille à domicile (comme d’habitude ou comme je le faisais déjà avant le confinement)
+	3	Je travaille à distance (télétravail)
+	4	Je suis en arrêt maladie
+	5	Je suis en chômage partiel
+	6	Je suis en congé
+	7	(NR)
+	8	Je travaille dans le secteur de la santé
+C6_3	1	Je travaille hors de mon domicile
+	2	Je travaille à domicile (comme d’habitude ou comme je le faisais déjà avant le confinement)
+	3	Je travaille à distance (télétravail)
+	4	Je suis en arrêt maladie
+	5	Je suis en chômage partiel
+	6	Je suis en congé
+	7	(NR)
+	8	Je travaille dans le secteur de la santé
+C7	1	Oui
+	2	Non
+C7DEP	1	Ain
+	2	Aisne
+	3	Allier
+	4	Alpes-de-Haute-Provence
+	5	Hautes-Alpes
+	6	Alpes-Maritimes
+	7	Ardèche
+	8	Ardennes
+	9	Ariège
+	10	Aube
+	11	Aude
+	12	Aveyron
+	13	Bouches-du-Rhône
+	14	Calvados
+	15	Cantal
+	16	Charente
+	17	Charente-Maritime
+	18	Cher
+	19	Corrèze
+	20	Corse-du-Sud
+	21	Côte-d'Or
+	22	Côtes-d'Armor
+	23	Creuse
+	24	Dordogne
+	25	Doubs
+	26	Drôme
+	27	Eure
+	28	Eure-et-Loir
+	29	Finistère
+	30	Gard
+	31	Haute-Garonne
+	32	Gers
+	33	Gironde
+	34	Hérault
+	35	Ille-et-Vilaine
+	36	Indre
+	37	Indre-et-Loire
+	38	Isère
+	39	Jura
+	40	Landes
+	41	Loir-et-Cher
+	42	Loire
+	43	Haute-Loire
+	44	Loire-Atlantique
+	45	Loiret
+	46	Lot
+	47	Lot-et-Garonne
+	48	Lozère
+	49	Maine-et-Loire
+	50	Manche
+	51	Marne
+	52	Haute-Marne
+	53	Mayenne
+	54	Meurthe-et-Moselle
+	55	Meuse
+	56	Morbihan
+	57	Moselle
+	58	Nièvre
+	59	Nord
+	60	Oise
+	61	Orne
+	62	Pas-de-Calais
+	63	Puy-de-Dôme
+	64	Pyrénées-Atlantiques
+	65	Hautes-Pyrénées
+	66	Pyrénées-Orientales
+	67	Bas-Rhin
+	68	Haut-Rhin
+	69	Rhône
+	70	Haute-Saône
+	71	Saône-et-Loire
+	72	Sarthe
+	73	Savoie
+	74	Haute-Savoie
+	75	Paris
+	76	Seine-Maritime
+	77	Seine-et-Marne
+	78	Yvelines
+	79	Deux-Sèvres
+	80	Somme
+	81	Tarn
+	82	Tarn-et-Garonne
+	83	Var
+	84	Vaucluse
+	85	Vendée
+	86	Vienne
+	87	Haute-Vienne
+	88	Vosges
+	89	Yonne
+	90	Territoire de Belfort
+	91	Essonne
+	92	Hauts-de-Seine
+	93	Seine-Saint-Denis
+	94	Val-de-Marne
+	95	Val-d'Oise
+	96	Haute-Corse
+C7REG12	1	Ile-de-France
+	2	Centre-Val de Loire
+	3	Bourgogne-Franche-Comté
+	4	Normandie
+	5	Hauts-de-France
+	6	Grand-Est
+	7	Pays de la Loire
+	8	Bretagne
+	9	Nouvelle Aquitaine
+	10	Occitanie
+	11	Auvergne-Rhône-Alpes
+	12	PACA + Corse
+	13	(NR)
+C10	1	Sans diplôme
+	2	Certificat de formation générale (CFG), Certificat d’études primaires, Diplôme national du brevet
+	3	Certificat d’aptitude professionnelle (CAP), Brevet d’études professionnelles (BEP)
+	4	Baccalauréat ou diplôme équivalent
+	5	Bac +1 ou 2
+	6	Bac +3 ou plus
+	7	Autre
+	8	(NR)
+C11	1	Scientifique
+	2	Juridique ou commerciale
+	3	Médicale ou para-médicale
+	4	Littéraire
+	5	Autre
+	6	(NR)
+D60A	1	Très à gauche
+	2	A gauche
+	3	Au centre
+	4	A droite
+	5	Très à droite
+	6	Ni à gauche ni à droite
+	7	(NR)
+D60	1	Les médecins devraient attendre les résultats des essais scientifiques avant d’administrer les médicaments susceptibles de combattre le virus
+	2	Les médecins doivent pouvoir prescrire des médicaments susceptibles de combattre le virus même si leur efficacité n’a pas été prouvée scientifiquement
+	3	(NR)
+D61	1	C’est aux scientifiques de dire quelles mesures doivent être prises pour lutter contre l’épidémie et le gouvernement doit les appliquer le plus strictement possible
+	2	C’est au gouvernement seul de décider des mesures qui doivent être prises pour lutter contre l’épidémie, même si elles ne suivent pas les mesures préconisées par les scientifiques
+	3	(NR)
+D62_0	1	Tout à fait d’accord
+	2	Plutôt d’accord
+	3	Plutôt pas d’accord
+	4	Pas d’accord du tout
+	5	(NR)
+D62_1	1	Tout à fait d’accord
+	2	Plutôt d’accord
+	3	Plutôt pas d’accord
+	4	Pas d’accord du tout
+	5	(NR)
+D62_2	1	Tout à fait d’accord
+	2	Plutôt d’accord
+	3	Plutôt pas d’accord
+	4	Pas d’accord du tout
+	5	(NR)
+D63	1	On n'a pas développé suffisamment la recherche médicale
+	2	On n’a pas suffisamment respecté le monde naturel
+	3	(NR)
+ALEAD65	1	D65
+	2	D66
+D65	1	Plus confiance dans la science qu'auparavant
+	2	Moins confiance dans la science qu'auparavant
+	3	Ni plus ni moins confiance dans la science qu'auparavant
+	4	(NR)
+D66	1	Plus confiance dans les scientifiques qu'auparavant
+	2	Moins confiance dans les scientifiques qu'auparavant
+	3	Ni plus ni moins confiance dans les scientifiques qu'auparavant
+	4	(NR)
+ALEAD70	1	D70
+	2	D71
+D70	1	Oui, certainement
+	2	Oui, probablement
+	3	Non, probablement pas
+	4	Non, certainement pas
+	5	Nsp
+D71	1	Oui, certainement
+	2	Oui, probablement
+	3	Non, probablement pas
+	4	Non, certainement pas
+	5	Nsp
+D67	1	On peut faire confiance à la plupart des gens
+	2	On n’est jamais assez prudent quand on a affaire aux autres
+	3	(NR)
+D68_0	1	Très confiant
+	2	Plutôt confiant
+	3	Plutôt pas confiant
+	4	Pas du tout confiant
+	5	(NR)
+D68_1	1	Très confiant
+	2	Plutôt confiant
+	3	Plutôt pas confiant
+	4	Pas du tout confiant
+	5	(NR)
+D68_2	1	Très confiant
+	2	Plutôt confiant
+	3	Plutôt pas confiant
+	4	Pas du tout confiant
+	5	(NR)
+D68_3	1	Très confiant
+	2	Plutôt confiant
+	3	Plutôt pas confiant
+	4	Pas du tout confiant
+	5	(NR)
+D68_4	1	Très confiant
+	2	Plutôt confiant
+	3	Plutôt pas confiant
+	4	Pas du tout confiant
+	5	(NR)
+D68_5	1	Très confiant
+	2	Plutôt confiant
+	3	Plutôt pas confiant
+	4	Pas du tout confiant
+	5	(NR)
+D68_6	1	Très confiant
+	2	Plutôt confiant
+	3	Plutôt pas confiant
+	4	Pas du tout confiant
+	5	(NR)
+D68_7	1	Très confiant
+	2	Plutôt confiant
+	3	Plutôt pas confiant
+	4	Pas du tout confiant
+	5	(NR)
+D68_8	1	Très confiant
+	2	Plutôt confiant
+	3	Plutôt pas confiant
+	4	Pas du tout confiant
+	5	(NR)
+D69_0	1	Systématiquement
+	2	Chaque fois que cela est possible
+	3	Parfois
+	4	Rarement
+	5	Jamais
+	6	(NR)
+D69_1	1	Systématiquement
+	2	Chaque fois que cela est possible
+	3	Parfois
+	4	Rarement
+	5	Jamais
+	6	(NR)
+D69_2	1	Systématiquement
+	2	Chaque fois que cela est possible
+	3	Parfois
+	4	Rarement
+	5	Jamais
+	6	(NR)
+D69_3	1	Systématiquement
+	2	Chaque fois que cela est possible
+	3	Parfois
+	4	Rarement
+	5	Jamais
+	6	(NR)
+D69_4	1	Systématiquement
+	2	Chaque fois que cela est possible
+	3	Parfois
+	4	Rarement
+	5	Jamais
+	6	(NR)
+D69_5	1	Systématiquement
+	2	Chaque fois que cela est possible
+	3	Parfois
+	4	Rarement
+	5	Jamais
+	6	(NR)
+D69_6	1	Systématiquement
+	2	Chaque fois que cela est possible
+	3	Parfois
+	4	Rarement
+	5	Jamais
+	6	(NR)
+D69_7	1	Systématiquement
+	2	Chaque fois que cela est possible
+	3	Parfois
+	4	Rarement
+	5	Jamais
+	6	(NR)
