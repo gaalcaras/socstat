@@ -7,15 +7,15 @@ covid_d <- read_tsv(here::here("data-raw", "data", "Dictionnaire_codes_Vague_7.t
 covid_d <- covid_d %>%
   fill(Question)
 
-recode_var <- function(x) {
+recode_var <- function(x, dict) {
   var_name <- as_label(substitute(x))
-  codes <- covid_d %>%
+  codes <- dict %>%
     filter(Question == var_name)
   factor(x, codes$Code, codes$Signification, ordered = TRUE)
 }
 
 covid <- covid %>%
-  mutate_at(vars(covid_d$Question), .funs = recode_var)
+  mutate_at(vars(covid_d$Question), .funs = recode_var, dict = covid_d)
 
 covid_r <- covid %>%
   select(jour = JOURV7,
