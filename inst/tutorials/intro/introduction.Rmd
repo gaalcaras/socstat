@@ -132,36 +132,67 @@ r <- round(m)
 Et plutôt faire :
 
 ```{r good_var_name, echo = TRUE}
-c(12, 24, 73, 43)
-age_moyen <- mean(a)
-age_m_arrondi <- round(m)
+ages <- c(12, 24, 73, 43)
+age_moyen <- mean(ages)
+age_m_arrondi <- round(age_moyen)
 ```
 
 Évidemment, il est parfois impossible d'être très clair ou explicite avec le seul langage R. C'est pourquoi il offre la possibilité d'insérer des commentaires, qui sont l'équivalent de didascalies : ils s'adressent uniquement à la personne qui lit, et sera ignoré dans le reste du code par R.
 
 ```{r comments, echo = TRUE}
-# Saisir les âges, dont un qu'on ignore (NA = No Answer)
+# Calculer les dates de naissance
+2020 - ages
+```
+
+<br>
+
+*Exercice : commenter le code suivant.*
+
+```{r comments_ex, exercise = TRUE}
 ages <- c(12, 24, 73, 43, NA)
 
-# Faire la moyenne des âges en ignorant les NA
 age_moyen <- mean(a, na.rm = TRUE)
 
-# Arrondir l'âge moyen à deux chiffres après la virgule
-age_m_arrondi <- round(m, 2)
+age_m_arrondi <- round(m, digits = 2)
 ```
 
 ## Les connecteurs logiques
 
+Revenons sur un exemple simple, faire la moyenne des âges. Jusqu'ici, nous avons vu comment faire des phrases simples :
+
 ```{r no_pipe, echo = TRUE}
+# Je saisis les âges
 ages <- c(12, 24, 73, 43)
+
+# Je fais la moyenne des âges
 age_moyen <- mean(a)
+
+# J'arrondis la moyenne des âges
 age_m_arrondi <- round(m)
 ```
 
+Bien entendu, il serait plus simple et élégant de dire "je saisis les âges, **puis** j'en calcule la moyenne **et** j'arrondis le tout". Autrement dit, plutôt que de faire une succession de phrases simples, nous pouvons utiliser des **connecteurs logiques** pour faire des phrases plus complexes.
+
+Dans R, cela s'effectue avec le symbole : `%>%`.
+
 ```{r with_pipe, echo = TRUE}
+# Charger le symbole "%>%" issu du paquet tidyverse
+library(tidyverse)
+
+# Je saisis les âges
 c(12, 24, 73, 43) %>%
+  # J'en fais la moyenne
   mean() %>%
+  # Puis j'arrondis le tout
   round()
+```
+
+<br>
+
+*Exercice : à l'aide du symbole `%>%`, trouver la date de naissance moyenne du groupe.*
+
+```{r with_pipe_ex, echo = TRUE, exercise = TRUE}
+2020 %>%
 ```
 
 ## Bases de données
@@ -189,7 +220,7 @@ library(tidyverse)
 
 ```
 
-### Individus
+### Individus (lignes)
 
 Les individus (lignes d'une base de données) peuvent être sélectionnés à l'aide des verbes `head()`, `tail()`, `slice()` et `filter()`.
 
@@ -210,6 +241,7 @@ covid7 %>%
 covid7 %>%
   filter(appareil == "Smartphone")
 ```
+
 <br>
 
 *Exercice : utilisez les fonctions `filter()` et `head()` pour trouver les 15 premières femmes âgées entre 45 et 49 ans.*
@@ -218,26 +250,32 @@ covid7 %>%
 ```{r filter_ex, exercise = TRUE}
 ```
 
-### Didascalies
+### Variables (colonnes)
 
-*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+Les variables (colonnes d'une base de données) peuvent être sélectionnées à l'aide des verbes `select()`.
 
-Some questions to verify that you understand the purposes of various base and recommended R packages:
+```{r select, echo = TRUE}
+# Montrer les 7 premières variables
+covid7 %>%
+  select(1:7)
 
-```{r quiz}
-quiz(
-  question("Which package contains functions for installing other R packages?",
-    answer("base"),
-    answer("tools"),
-    answer("utils", correct = TRUE),
-    answer("codetools")
-  ),
-  question("Which of the R packages listed below are used to create plots?",
-    answer("lattice", correct = TRUE),
-    answer("tools"),
-    answer("stats"),
-    answer("grid", correct = TRUE)
-  )
-)
+# Sélectionner des colonnes par leur nom
+covid7 %>%
+  select(departement, region, agglo)
+
+# Sélectionner des plages de colonnes (de "jour" jusque "age")
+covid7 %>%
+  select(jour:age)
+
+# Sélectionner des variables qui commencent par "chercheurs_"
+covid7 %>%
+  select(starts_with("chercheurs_"))
 ```
 
+<br>
+
+*Exercice : utilisez les fonctions `filter()` et `select()` pour étudier l'âge et les gestes barrières (commence par "gestes_") des hommes.*
+
+
+```{r select_ex, exercise = TRUE}
+```
