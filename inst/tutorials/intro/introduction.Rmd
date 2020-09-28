@@ -1,0 +1,243 @@
+---
+title: "Penser le code comme du texte"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(socstat)
+library(tidyverse)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Noms, verbes, champs lexicaux
+
+
+
+### Variables : les noms communs
+
+Les variables permettent de ranger n'importe quelle information en lui donnant un nom. On peut ensuite la retrouver rapidement juste en se souvenant de son nom.
+
+**Les variables nous donnent le moyen de nous concentrer sur le traitement de l'information plutôt que sur son contenu**.
+
+Pour stocker de l'information dans une variable, on utilise l'opérateur `<-` :
+
+```{r demo_var, echo=TRUE}
+texte <- "Une variable peut contenir du texte"
+deux_plus_deux <- 2+2
+age <- 24
+```
+
+<br>
+
+*Exercice : à l'aide de la variable `age`, trouver la date de naissance de la personne et stockez-la dans une nouvelle variable `date_naissance`.*
+
+```{r create_new_var, exercise=TRUE}
+
+```
+
+### Fonctions : les verbes
+
+Les fonctions permettent de ranger n'importe quel traitement d'information en leur donnant un nom. On peut ensuite reproduire ce même traitement juste en se souvenant de son nom.
+
+**Les fonctions nous donnent le moyen de nous concentrer sur le sens d'un traitement plutôt que sur ses différentes étapes**.
+
+Par exemple, il serait pénible d'avoir à sans cesse ré-écrire la formule de la moyenne plutôt que de l'effectuer directement.
+
+Chaque fonction a ainsi un nom (`c` pour faire des vecteurs, `mean` pour faire une moyenne) et ce qu'on appelle des arguments (les informations que la fonction peut traiter).
+
+```{r demo_func, echo=TRUE}
+ages <- c(24, 26)
+moyenne_age <- mean(ages)
+```
+
+```{r demo_func_quiz}
+quiz(
+  question("Que contient la variable `moyenne_age` ?",
+    answer("`mean(ages)`"),
+    answer("`ages`"),
+    answer("25", correct = TRUE)
+  ),
+  question("À quoi correspond `ages` ?",
+           answer("Une variable", correct = TRUE),
+           answer("Un argument", correct = TRUE),
+           answer("Le nom d'une fonction")
+           ),
+  question("À quoi correspond `mean` ?",
+           answer("Une variable"),
+           answer("Un argument"),
+           answer("Le nom d'une fonction", correct = TRUE)
+           )
+)
+```
+<br>
+
+*Exercice : utilisez la fonction `round` pour arrondir le nombre `pi`.*
+
+```{r round_pi, exercise=TRUE, exercise.eval=TRUE}
+pi
+```
+
+<br>
+
+Il est même possible de créer ses propres fonctions dans R.
+
+```{r create_func, echo=TRUE}
+ajouter_deux <- function(nombre) {
+  nombre + 2
+}
+ajouter_deux(4)
+```
+
+<br>
+
+*Exercice : complétez la fonction `calculer_date_naissance` qu'elle calcule... la date de naissance, puis utilisez-la pour calculer les dates de naissances contenues dans `ages`.*
+
+
+```{r create_func_ex, exercise=TRUE, exercise.lines = 5}
+calculer_date_naissance <- function(age) {
+  
+}
+```
+
+### Paquets : les champs lexicaux
+
+Les paquets permettent de regrouper un ensemble cohérent de verbes. Ils forment ainsi des champs lexicaux.
+
+Les paquets s'utilisent en deux étapes :
+
+1. Ils s'installent une seule et unique fois : `install.packages("tidyverse")`
+2. Ils se chargent à chaque fois qu'on veut s'en servir : `library(socstat)`
+
+Enfin, on peut mettre à jour ses paquets pour avoir les dernières fonctionnalités : `update.packages()`.
+
+## Didascalies
+
+Le code R est un texte constitué d'une succession de commandes. Il a un double rôle :
+
++ être exécuté par la machine
++ être lu, compris et édité par d'autres personnes
+
+Par conséquent, il est préférable de penser au code comme un texte à l'intention d'humains, et non pas d'une machine : il doit être clair, compréhensible, organisé.
+
+Pour ce faire, il faut utiliser les noms de variable les plus clairs possibles. Ne pas faire :
+
+```{r bad_var_name, echo = TRUE}
+a <- c(12, 24, 73, 43)
+m <- mean(a)
+r <- round(m)
+```
+
+Et plutôt faire :
+
+```{r good_var_name, echo = TRUE}
+c(12, 24, 73, 43)
+age_moyen <- mean(a)
+age_m_arrondi <- round(m)
+```
+
+Évidemment, il est parfois impossible d'être très clair ou explicite avec le seul langage R. C'est pourquoi il offre la possibilité d'insérer des commentaires, qui sont l'équivalent de didascalies : ils s'adressent uniquement à la personne qui lit, et sera ignoré dans le reste du code par R.
+
+```{r comments, echo = TRUE}
+# Saisir les âges, dont un qu'on ignore (NA = No Answer)
+ages <- c(12, 24, 73, 43, NA)
+
+# Faire la moyenne des âges en ignorant les NA
+age_moyen <- mean(a, na.rm = TRUE)
+
+# Arrondir l'âge moyen à deux chiffres après la virgule
+age_m_arrondi <- round(m, 2)
+```
+
+## Les connecteurs logiques
+
+```{r no_pipe, echo = TRUE}
+ages <- c(12, 24, 73, 43)
+age_moyen <- mean(a)
+age_m_arrondi <- round(m)
+```
+
+```{r with_pipe, echo = TRUE}
+c(12, 24, 73, 43) %>%
+  mean() %>%
+  round()
+```
+
+## Bases de données
+
+### Charger une base de données
+
+Il existe plusieurs manières de charger des données dans R. La plus commune est de les charger depuis un fichier. Cette manipulation n'est pas compliquée, mais demande un peu de pratique. 
+
+Pour l'instant, nous allons nous contenter de charger des données issues du paquet `socstat` en utilisant la fonction `data`.
+
+*Exercice : chargez le jeu de données `covid7` à l'aide de la fonction `data()`.*
+
+```{r load_db, echo = TRUE, exercise=TRUE}
+data()
+```
+
+<br>
+
+*Exercice : utilisez les fonctions `nrow`, `ncol` et `glimpse` (du paquet `tidyverse`) sur la variable `covid7`.*
+
+
+```{r glimpse_ex, message=FALSE, warning=FALSE, exercise=TRUE, exercise.eval=TRUE}
+library(tidyverse)
+
+
+```
+
+### Individus
+
+Les individus (lignes d'une base de données) peuvent être sélectionnés à l'aide des verbes `head()`, `tail()`, `slice()` et `filter()`.
+
+```{r filter, echo = TRUE}
+# Montrer les 10 premiers individus
+covid7 %>%
+  head(10)
+
+# Voir les deux derniers individus
+covid7 %>%
+  tail(2)
+
+# Sélectionner les individus 32 et 2839
+covid7 %>%
+  slice(32, 2839)
+
+# Sélectionner les individus qui ont répondu par smartphone
+covid7 %>%
+  filter(appareil == "Smartphone")
+```
+<br>
+
+*Exercice : utilisez les fonctions `filter()` et `head()` pour trouver les 15 premières femmes âgées entre 45 et 49 ans.*
+
+
+```{r filter_ex, exercise = TRUE}
+```
+
+### Didascalies
+
+*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+
+Some questions to verify that you understand the purposes of various base and recommended R packages:
+
+```{r quiz}
+quiz(
+  question("Which package contains functions for installing other R packages?",
+    answer("base"),
+    answer("tools"),
+    answer("utils", correct = TRUE),
+    answer("codetools")
+  ),
+  question("Which of the R packages listed below are used to create plots?",
+    answer("lattice", correct = TRUE),
+    answer("tools"),
+    answer("stats"),
+    answer("grid", correct = TRUE)
+  )
+)
+```
+
