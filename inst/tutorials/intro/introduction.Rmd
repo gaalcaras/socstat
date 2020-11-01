@@ -1,5 +1,7 @@
 ---
 title: "Penser le code comme du texte"
+tutorial:
+  version: 0.1
 output: learnr::tutorial
 runtime: shiny_prerendered
 ---
@@ -13,8 +15,6 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Noms, verbes, champs lexicaux
 
-
-
 ### Variables : les noms communs
 
 Les variables permettent de ranger n'importe quelle information en lui donnant un nom. On peut ensuite la retrouver rapidement juste en se souvenant de son nom.
@@ -23,7 +23,7 @@ Les variables permettent de ranger n'importe quelle information en lui donnant u
 
 Pour stocker de l'information dans une variable, on utilise l'opérateur `<-` :
 
-```{r demo_var, echo=TRUE}
+```{r demo_var, include=TRUE, echo = TRUE}
 texte <- "Une variable peut contenir du texte"
 deux_plus_deux <- 2+2
 age <- 24
@@ -47,9 +47,9 @@ Par exemple, il serait pénible d'avoir à sans cesse ré-écrire la formule de 
 
 Chaque fonction a ainsi un nom (`c` pour faire des vecteurs, `mean` pour faire une moyenne) et ce qu'on appelle des arguments (les informations que la fonction peut traiter).
 
-```{r demo_func, echo=TRUE}
-ages <- c(24, 26)
-moyenne_age <- mean(ages)
+```{r demo_func, include=TRUE, echo=TRUE}
+ages <- c(12, 24, 73, 43)
+moyenne_ages <- mean(ages)
 ```
 
 ```{r demo_func_quiz}
@@ -165,10 +165,10 @@ Revenons sur un exemple simple, faire la moyenne des âges. Jusqu'ici, nous avon
 ages <- c(12, 24, 73, 43)
 
 # Je fais la moyenne des âges
-age_moyen <- mean(a)
+age_moyen <- mean(ages)
 
 # J'arrondis la moyenne des âges
-age_m_arrondi <- round(m)
+age_m_arrondi <- round(age_moyen)
 ```
 
 Bien entendu, il serait plus simple et élégant de dire "je saisis les âges, **puis** j'en calcule la moyenne **et** j'arrondis le tout". Autrement dit, plutôt que de faire une succession de phrases simples, nous pouvons utiliser des **connecteurs logiques** pour faire des phrases plus complexes.
@@ -193,89 +193,4 @@ c(12, 24, 73, 43) %>%
 
 ```{r with_pipe_ex, echo = TRUE, exercise = TRUE}
 2020 %>%
-```
-
-## Bases de données
-
-### Charger une base de données
-
-Il existe plusieurs manières de charger des données dans R. La plus commune est de les charger depuis un fichier. Cette manipulation n'est pas compliquée, mais demande un peu de pratique. 
-
-Pour l'instant, nous allons nous contenter de charger des données issues du paquet `socstat` en utilisant la fonction `data`.
-
-*Exercice : chargez le jeu de données `covid7` à l'aide de la fonction `data()`.*
-
-```{r load_db, echo = TRUE, exercise=TRUE}
-data()
-```
-
-<br>
-
-*Exercice : utilisez les fonctions `nrow`, `ncol` et `glimpse` (du paquet `tidyverse`) sur la variable `covid7`.*
-
-
-```{r glimpse_ex, message=FALSE, warning=FALSE, exercise=TRUE, exercise.eval=TRUE}
-library(tidyverse)
-
-
-```
-
-### Individus (lignes)
-
-Les individus (lignes d'une base de données) peuvent être sélectionnés à l'aide des verbes `head()`, `tail()`, `slice()` et `filter()`.
-
-```{r filter, echo = TRUE}
-# Montrer les 10 premiers individus
-covid7 %>%
-  head(10)
-
-# Voir les deux derniers individus
-covid7 %>%
-  tail(2)
-
-# Sélectionner les individus 32 et 2839
-covid7 %>%
-  slice(32, 2839)
-
-# Sélectionner les individus qui ont répondu par smartphone
-covid7 %>%
-  filter(appareil == "Smartphone")
-```
-
-<br>
-
-*Exercice : utilisez les fonctions `filter()` et `head()` pour trouver les 15 premières femmes âgées entre 45 et 49 ans.*
-
-
-```{r filter_ex, exercise = TRUE}
-```
-
-### Variables (colonnes)
-
-Les variables (colonnes d'une base de données) peuvent être sélectionnées à l'aide des verbes `select()`.
-
-```{r select, echo = TRUE}
-# Montrer les 7 premières variables
-covid7 %>%
-  select(1:7)
-
-# Sélectionner des colonnes par leur nom
-covid7 %>%
-  select(departement, region, agglo)
-
-# Sélectionner des plages de colonnes (de "jour" jusque "age")
-covid7 %>%
-  select(jour:age)
-
-# Sélectionner des variables qui commencent par "chercheurs_"
-covid7 %>%
-  select(starts_with("chercheurs_"))
-```
-
-<br>
-
-*Exercice : utilisez les fonctions `filter()` et `select()` pour étudier l'âge et les gestes barrières (commence par "gestes_") des hommes.*
-
-
-```{r select_ex, exercise = TRUE}
 ```
