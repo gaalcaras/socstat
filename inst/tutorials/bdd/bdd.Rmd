@@ -1,0 +1,292 @@
+---
+title: "Introduction aux bases de données"
+tutorial:
+  version: 0.1
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(socstat)
+library(tidyverse)
+knitr::opts_chunk$set(echo = FALSE)
+data("covid7")
+```
+
+## Bases de données
+
+En statistique, les bases de données sont la manière privilégiée de récolter et de présenter des informations.
+
+### Qu'est-ce qu'une base de données ?
+
+Une base de données est, en termes simples, un tableau composé de trois éléments :
+
+- **Individu (lignes)** : c'est unité statistique fondamentale. C'est l'entité à propos de laquelle on collecte des informations, aussi appelée **observation**.
+- **Variable (colonnes)** : c'est une série d'informations homogènes, collectée sur un ensemble d’individus, renseignant la même information.
+- **Donnée (cases)** : information collectée sur un individu, appartenant à une variable.
+
+Schématiquement, une base de données se présente donc de la sorte :
+
+|            | Variable 1 | Variable 2 | Variable 3 |
+|:----------:|:---:|:---:|:---:|
+| Individu 1 | Donnée | Donnée | Donnée |
+| Individu 2 | Donnée | Donnée | Donnée |
+| Individu 3 | Donnée | Donnée | Donnée |
+
+### Comment charger une base de données dans R ?
+
+Il existe plusieurs manières de charger des données dans R. La plus commune est de les charger depuis un fichier. Cette manipulation n'est pas compliquée, mais demande un peu de pratique. 
+
+Pour l'instant, nous allons nous contenter de charger des données issues du paquet `socstat` en utilisant la fonction `data`.
+
+*Exercice : chargez le jeu de données `covid7` à l'aide de la fonction `data()`.*
+
+```{r load_db, echo = TRUE, exercise=TRUE}
+data()
+```
+
+<br>
+
+*Exercice : utilisez les fonctions `nrow`, `ncol` et `glimpse` (du paquet `tidyverse`) sur la variable `covid7`.*
+
+
+```{r glimpse_ex, message=FALSE, warning=FALSE, exercise=TRUE, exercise.eval=TRUE}
+library(tidyverse)
+
+
+```
+
+## Individus (lignes)
+
+### Qu'est-ce qu'un individu statistique ?
+
+L'individu (au sens statistique) est une entité, mais pas nécessairement une personne. Chaque ligne dans une base de données correspond à un individu statistique.
+
+Voici des exemples d'individus statistiques qui ne sont pas des personnes :
+
+- un pays, une région
+- une institution (établissement, entreprise)
+- un ménage
+
+Plus largement, un individu peut être une unité d’observation
+
+- un texte (si la population est un corpus)
+- un objet (si la population est un ensemble d’objets)
+
+### Comment travailler avec les individus statistiques dans R ?
+
+Dans R, les individus peuvent être sélectionnés à l'aide des verbes `head()`, `tail()`, `slice()` et `filter()`.
+
+```{r filter, echo = TRUE}
+# Montrer les 10 premiers individus
+covid7 %>%
+  head(10)
+
+# Voir les deux derniers individus
+covid7 %>%
+  tail(2)
+
+# Sélectionner les individus 32 et 2839
+covid7 %>%
+  slice(32, 2839)
+
+# Sélectionner les individus qui ont répondu par smartphone
+covid7 %>%
+  filter(appareil == "Smartphone")
+```
+
+<br>
+
+*Exercice : utilisez les fonctions `filter()` et `head()` pour trouver les 15 premières femmes âgées entre 45 et 49 ans.*
+
+
+```{r filter_ex, exercise = TRUE}
+```
+
+## Variables (colonnes)
+
+### Qu'est-ce qu'une variable en statistique ?
+
+Chaque colonne dans une base de données correspond à une variable statisque.
+
+*Nota Bene : les variables statisiques (colonnes d'une base de données) sont différentes conceptuellement des variables informatiques de R, qui peuvent contenir tout type d'informations*.
+
+### Comment interagir avec les variables statistiques dans R ?
+
+Les variables (colonnes d'une base de données) peuvent être sélectionnées à l'aide des verbes `select()`.
+
+```{r select, echo = TRUE}
+# Montrer les 7 premières variables
+covid7 %>%
+  select(1:7)
+
+# Sélectionner des colonnes par leur nom
+covid7 %>%
+  select(departement, region, agglo)
+
+# Sélectionner des plages de colonnes (de "jour" jusque "age")
+covid7 %>%
+  select(jour:age)
+
+# Sélectionner des variables qui commencent par "chercheurs_"
+covid7 %>%
+  select(starts_with("chercheurs_"))
+```
+
+<br>
+
+*Exercice : utilisez les fonctions `filter()` et `select()` pour étudier l'âge et les gestes barrières (commence par "gestes_") des hommes.*
+
+
+```{r select_ex, exercise = TRUE}
+```
+
+### Isoler une variable
+
+`select()` fonctionne très bien dans le cadre d'une transformation d'une base de données.
+
+Parfois cependant, nous voulons simplement isoler une variable pour l'étudier *en dehors de la base de données*. Dans ce cas, il faudra utiliser la fonction `pull()`.
+
+```{r pull_select_demo, echo = TRUE}
+# Select() ne fonctionne pas si on veut faire directement la moyenne d'une variable...
+covid7 %>%
+  select(rencontre_amis) %>%
+  mean()
+
+# Mais avec pull(), ça marche !
+covid7 %>%
+  pull(rencontre_amis) %>%
+  mean()
+```
+
+<br />
+
+*Avec la variable `rencontre_amis`, calculez le nombre total de fois où les 5000 individus ont rencontré leurs amis en une semaine.*
+
+```{r pull_select_exo, exercise = TRUE, exercise.lines = 3}
+```
+
+
+## Variables, le retour
+
+En statistiques, si nous étudions des individus, nous passons le plus clair de notre temps à traiter des variables.
+
+Connaître, reconnaître et analyser des variables est donc une activité primordiale et normée : il est donc important de se familiariser avec le vocabulaire propre aux variables statistiques.
+
+### Deux catégories de variable
+
+Les variables se distinguent globalement **en deux catégories, les variables quantitatives et les variables qualitatives**. Pour arriver à les reconnaître, il faut se demander : quelle est la nature de l’information récoltée ?
+
+- Si l'information relève de la mesure, il s'agit d'une variable quantitative
+- Si l'information revèle de la catégorie, il s'agit d'une variable qualitative
+
+Savoir distinguer une variable quantitative d'une variable qualitative n'est pas qu'une affaire de vocabulaire : **les méthodes et les traitements statistiques sont réservés à un certain type de variable**. Certaines méthodes ne marchent qu'avec des variables qualitatives, d'autres uniquement avec des variables quantitatives. Si vous essayez d'utiliser une méthode conçue pour des variables quantitatives avec des variables qualitatives, vous pouvez être confrontés à de gros problèmes !
+
+Cette propriété des méthodes statistiques peut être utilisée pour reconnaître une variable quantitative d'une variable qualitative. Par exemple, puisqu'une moyenne ne peut s'appliquer qu'à une variable quantitative, il suffit de se demander si la moyenne de la variable que nous étudions aurait du sens. 
+
+```{r reconnaitre_vars, exercise=TRUE, exercise.lines=5}
+# Utilisez cet espace pour répondre aux questions du quiz!
+  
+```
+
+Pour chacune des variables suivantes tirées de la base `covid7`, dites si elle correspond à une variable qualitative ou quantitative.
+
+```{r quiz_var_type}
+quiz(
+  question("`sexe`",
+    answer("Qualitative", correct = TRUE),
+    answer("Quantitative")
+  ),
+  question("`logement_pieces`",
+    answer("Qualitative"),
+    answer("Quantitative", correct = TRUE)
+  ),
+  question("`age`",
+    answer("Qualitative", correct = TRUE),
+    answer("Quantitative")
+  )
+)
+```
+
+### Variables quantitatives
+
+Une variable quantitative est une **mesure numérique**. Elle est composée de **la valeur** (un nombre) et d’une **unité** (mètres, années, kilos, euros, millions d'euros, ...).
+
+```{r var_quant_demo, echo = TRUE}
+covid7 %>%
+  pull(rencontre_amis) %>%
+  head(100)
+```
+
+### Variables qualitatives
+
+Les variables qualitatives sont parfois appelées nominales ou variables catégorielles. Les valeurs sont des catégories.
+
+**En sciences sociales, nous avons à faire avec beaucoup de variables qualitatives** par rapport à d'autres disciplines. Il faut donc bien connaître leurs propriétés.
+
+<br />
+
+#### Les variables qualitatives sont-elles juste du texte ?
+
+Non ! Il est utile de distinguer entre variables qualitatives et variables textuelles :
+
+- Les **variables qualitatives** comportent un nombre raisonnable de **catégories**. Par exemple, nous pourrons classer 5000 personnes selon les deux genres proposés par un questionnaire, ou selon les 101 départements d'habitation.
+- Les **variables textuelles**, quant à elle, comportent presque autant de **valeurs** que d'individus. Par exemple, une question ouverte dans un questionnaire donnerait presque autant de réponses différentes que d'individus. Autre exemple, le contenu des commentaires sous une vidéo YouTube ne se répète que rarement, chaque commentaire est unique.
+
+R propose deux types de variable pour traiter chacune d'entre elle avec ses spécificités propres :
+
+- Les **variables `character` (`<chr>`)** correspondent aux variables textuelles
+- Les **variables `factor` (`<fct>`, `<ord>`)** correspondent aux variables qualitatives
+
+<br />
+
+#### Les modalités d'une variable qualitative
+
+Les différentes catégories proposées par une même variable qualitative s'appellent **les modalités**. Dans R, les modalités s'appellent les `levels`.
+
+```{r levels_intro, echo = TRUE}
+# Visualiser les modalités d'une variable
+covid7 %>%
+  pull(sexe) %>%
+  levels()
+```
+
+<br />
+
+#### Les variables qualitatives ordonnées
+
+Certaines variables qualitatives présentent une propriété intéressante : **leurs modalités peuvent être classées dans un ordre logique. Ces variables sont dites « ordonnées »**, et elles sont parfois opposées aux variables **catégorielles**.
+
+```{r var_qual_ord, echo = TRUE}
+covid7 %>%
+  pull(age) %>%
+  levels()
+```
+
+<br />
+
+```{r playground_quiz, exercise=TRUE, exercise.lines=5}
+# Utilisez cet espace pour répondre aux questions suivantes
+
+```
+
+
+```{r quiz_var_qual}
+quiz(
+  question("Comment caractériser la variable `appareil` ?",
+    answer("Variable qualitative", correct = TRUE),
+    answer("Variable textuelle"),
+    answer("Variable qualitative catégorielle", correct = TRUE),
+    answer("Variable qualitative ordonnée")
+  ),
+  question("Combien la variable `chercheurs_pharma` compte-t-elle de modalités ?",
+    answer("3"),
+    answer("4"),
+    answer("5", correct = TRUE),
+    answer("6")
+  )
+)
+```
+
+
