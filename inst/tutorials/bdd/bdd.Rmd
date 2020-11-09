@@ -1,5 +1,6 @@
 ---
 title: "Introduction aux bases de données"
+description: "Ce tutoriel explique le concept de base de données, d'individu statistiques et de variables (textuelles, qualitatives et quantitatives)"
 tutorial:
   version: 0.1
 output: learnr::tutorial

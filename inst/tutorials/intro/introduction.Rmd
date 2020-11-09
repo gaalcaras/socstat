@@ -1,5 +1,6 @@
 ---
 title: "Penser le code comme du texte"
+description: "Ce tutoriel présente le langage de programmation R"
 tutorial:
   version: 0.1
 output: learnr::tutorial
