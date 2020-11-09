@@ -4,5 +4,5 @@
 #'
 #' @export
 update_socstat <- function() {
-  devtools::install_github("gaalcaras/socstat")
+  rstudioapi::restartSession(command = 'devtools::install_github("gaalcaras/socstat")')
 }
