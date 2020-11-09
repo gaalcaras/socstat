@@ -1,0 +1,255 @@
+---
+title: "Décrire des données"
+description: "Ce tutoriel présente les principales méthodes de la statistique descriptive."
+tutorial:
+  version: 0.1
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(socstat)
+library(tidyverse)
+library(ggplot2)
+library(viridis)
+library(ggiraph)
+library(glue)
+knitr::opts_chunk$set(echo = FALSE)
+data("covid7")
+```
+
+## Décrire en statistiques
+
+### Qu'est-ce que décrire en statistiques ?
+
+La première étape d'une analyse statistique est de **comprendre ses données**. Pour les comprendre, il est souvent nécessaire de *les voir*, de *s'en faire une meilleure idée*. Énumérer les données une à une serait exhaustif, mais peu pratique : un peu comme une carte à l'échelle 1:1.
+
+En statistiques, **décrire signifie synthétiser des informations pour en produire une vision d’ensemble**. Nous passons alors *des données atomisées* (au niveau de l’individu) *aux données agrégées* (au niveau de la population) Les méthodes qui permettent cette synthèse composent ce qu'on appelle la **statistique descriptive**.
+
+Les statistiques inférentielles sont différenciées, parfois opposées à ce qu'on appelle *la statistique inférentielle*. Ces dernières ont pour objectif d'aider à expliquer, et pas seulement à décrire des données.
+
+### Quelle(s) méthode(s) ?
+
+On peut *grosso modo* diviser les méthodes descriptives en deux catégories :
+
++ les **visualisations**, qui regroupent les **tableaux** et les **graphiques**. Les visualisations fournissent un support d'interprétation riche pour comprendre la diversité et la répartition de l'information. En revanche, il est difficile de les comparer.
++ les **indicateurs** synthétisent en un seul nombre une dimension de l'information. L'avantage de ces indicateurs est qu'il peuvent être facilement comparés entre eux. En revanche, un indicateur ne donne accès qu'à une dimension précise de l'information : il est souvent nécessaire de les croiser et de ne pas se fier à un seul d'entre eux.
+
+D'une manière générale, souvenez-vous que **nous ne *voyons* jamais directement les données : ce sont des méthodes qui nous les *donnent à voir***, elles rendent visibles certains aspects et en laissent d'autres dans l'ombre. C'est surtout vrai des indicateurs, mais cela s'applique aussi aux visualisations.
+
+Cette propriété des méthodes descriptives a deux conséquences :
+
++ Il est important de connaître les aspects que chaque méthode met en valeur (et ceux qu'elles masquent)
++ Pour décrire une variable, il est **toujours préférable de croiser les méthodes** pour s'en faire l'idée la plus complète possible
+
+
+### Décrire l'information : diversité et distribution
+
+Quand nous décrivons des variables, nous nous intéressons simultanément à **deux dimensions de l'information** :
+
++ **sa diversité**, c'est-à-dire **l'amplitude des valeurs proposées**. Par exemple, une variable binaire (comme le sexe H/F) présente une bien moindre diversité d'information qu'une variable avec de très nombreuses valeurs (la profession ou le revenu en euros).
++ **sa distribution**, c'est-à-dire **la répartition des individus parmi les valeurs proposées**. Par exemple, une même variable (avec les mêmes valeurs) dans deux populations peut présenter une distribution différente : par exemple, un groupe où il n'y a que des femmes et un groupe où hommes et femmes sont en égales proportions.
+
+<br />
+
+*Quelques exercices pour mieux comprendre ces notions !*
+
+```{r diversity_distribution}
+set.seed(121)
+ages <- tibble(values = floor(c(rnorm(10000, 40, 5),
+                                c(rnorm(5000, 35, 2.5), rnorm(5000, 45, 2.5))
+                                )),
+               group = c(rep("A", 10000), rep("B", 10000)))
+
+gg <- ages %>%
+  count(values, group) %>%
+  mutate(tooltip = glue("Dans la ville {group}, {n} individus ont {values} ans.")) %>%
+  ggplot(aes(x = values, y = n, fill = group, tooltip = tooltip)) +
+  geom_bar_interactive(stat = "identity") +
+  facet_wrap(~ group) +
+  theme_minimal() +
+  scale_fill_viridis_d() +
+  labs(x = "", y = "",
+       title = "Distribution des âges dans les villes A et B") +
+  theme(legend.position = "none")
+
+girafe(ggobj = gg)
+```
+```{r quiz_div_div1}
+quiz(
+  question("Comment compareriez-vous la diversité de l'information des villes A et B ?",
+    answer("Beaucoup plus importante dans la ville A"),
+    answer("À peu près similaire dans les deux villes", correct = TRUE),
+    answer("Beaucoup plus importante dans la ville B")
+  ),
+  question("Comment compareriez-vous la distribution d'information des villes A et B ?",
+    answer("Très différente dans les deux villes", correct = TRUE),
+    answer("À peu près similaire dans les deux villes")
+  )
+)
+```
+
+```{r diversity_distribution2}
+set.seed(121)
+ages <- tibble(values = floor(c(rnorm(10000, 50, 6),
+                                rnorm(10000, 50, 3)
+                                )),
+               group = c(rep("C", 10000), rep("D", 10000)))
+
+gg <- ages %>%
+  count(values, group) %>%
+  mutate(tooltip = glue("Dans la ville {group}, {n} individus ont {values} ans.")) %>%
+  ggplot(aes(x = values, y = n, fill = group, tooltip = tooltip)) +
+  geom_bar_interactive(stat = "identity") +
+  facet_wrap(~ group) +
+  theme_minimal() +
+  scale_fill_viridis_d() +
+  labs(x = "", y = "",
+       title = "Distribution des âges dans les villes C et D") +
+  theme(legend.position = "none")
+
+girafe(ggobj = gg)
+```
+```{r quiz_div_div2}
+quiz(
+  question("Comment compareriez-vous la diversité de l'information des villes C et D ?",
+    answer("Beaucoup plus importante dans la ville C", correct = TRUE),
+    answer("À peu près similaire dans les deux villes"),
+    answer("Beaucoup plus importante dans la ville D")
+  ),
+  question("Comment compareriez-vous la distribution d'information des villes C et D ?",
+    answer("Très différente dans les deux villes"),
+    answer("À peu près similaire dans les deux villes", correct = TRUE)
+  )
+)
+```
+
+### Décrire une variable, deux variables, ...
+
+Les méthodes de la statisique descriptive sont regroupées selon le nombre de variables qu'elles permettent de décrire :
+
++ **statistique univariée** pour une seule variable
++ **statistique bivariée** pour deux variables
++ **statistique multivariée** pour trois variables et plus
+
+## Univariée : visualisations
+
+Pour visualiser la distribution d'une variable, les méthodes diffèrent selon qu'on a affaire à une variable qualitative ou quantitative.
+
+*Nota Bene :* les commandes présentées pour visualiser les distributions univariées sont tirées du paquet `socstat`. Il faudra donc penser à le charger pour s'en servir.
+
+### Décrire une variable
+
+Toujours aller du général au particulier :
+
+1. Parler de **l'ensemble** : quelle population (individus, effectifs) ? Quelle variable ?
+2. Décrire la **diversité** de l'information : nombre de modalités, amplitude des valeurs
+3. Décrire la **distribution** de l'information :
+    + Où se trouve la majorité des valeurs / modalités ?
+    + Une bonne description devrait à la fois donner le sens des fréquences (proportions, pourcentages) et des effectifs (nombre de personnes concernées)
+    + Relever les aspects inattendus, étonnants, subtils.
+    
+Éviter :
+
++ De paraphraser complètement la visualisation (répéter chaque modalité)
++ De commenter des éléments qui ne sont pas visibles
+
+### Variables qualitatives
+
+#### Le diagramme en barres
+
+```{r diagramme_en_barres, echo = TRUE}
+covid7 %>%
+  plot_bars(pcs)
+```
+
+```{r quiz_barplot}
+quiz(
+  question("À quoi sert la distance à zéro des barres ?",
+    answer("À rien"),
+    answer("Elle indique la proportion de chaque modalité"),
+    answer("Elle indique l'effectif de chaque modalité", correct = TRUE)
+  ),
+  question("À quoi sert l'aire foncée des barres ?",
+    answer("À rien", correct = TRUE),
+    answer("Elle indique la proportion de chaque modalité"),
+    answer("Elle indique l'effectif de chaque modalité")
+  ),
+  question("Que ne peut-on pas lire avec ce graphe ?",
+    answer("La proportion de chaque modalité", correct = TRUE),
+    answer("Le total des effectifs"),
+    answer("Les effectifs de chaque modalité")
+  )
+)
+```
+
+#### Le diagramme de Cleveland
+
+```{r diagramme_cleveland, echo = TRUE}
+covid7 %>%
+  plot_cleveland(gestes_mains)
+```
+
+```{r quiz_cleveland}
+quiz(
+  question("Que ne peut-on pas lire avec ce graphe ?",
+    answer("La proportion de chaque modalité", correct = TRUE),
+    answer("Le total des effectifs"),
+    answer("Les effectifs de chaque modalité")
+  )
+)
+```
+
+#### Le tri à plat
+
+```{r tri_a_plat, echo = TRUE}
+covid7 %>%
+  table_univ(marital)
+```
+
+```{r quiz_tap}
+question("Dans un tri à plat, à quoi sert l'ensemble ?",
+    answer("À savoir combien d'individus sont représentés dans le tableau", correct = TRUE),
+    answer("À vérifier que le total fait bien 100%", correct = TRUE),
+    answer("S'il n'y a pas les fréquences de chaque modalité, à pouvoir calculer les pourcentages de tête", correct = TRUE)
+  )
+```
+
+### Variables quantitatives
+
+#### Nuage de points
+
+```{r nuage_points, echo = TRUE}
+covid7 %>%
+  plot_points(covid_grave)
+```
+
+Avantage / inconvénient
+
+#### Histogramme
+
+```{r histogramme, echo = TRUE}
+covid7 %>%
+  plot_hist(logement_pieces)
+```
+
+Avantage / inconvénient
+
+### En général...
+
+```{r quiz_univ_viz}
+quiz(
+  question("Quelle est la différence entre un diagramme en barres et un histogramme ?",
+    answer("Le diagramme en barres est plus adapté pour les variables qualitatives, l'histogramme pour les variables quantitatives", correct = TRUE),
+    answer("Le diagramme en barres est plus adapté pour les variables quantitatives, l'histogramme pour les variables qualitatives"),
+    answer("Dans le premier, les barres sont visuellement séparées, tandis qu'elles sont contigues dans le second.")
+  ),
+  question("Quelle est la différence entre un nuage de points et un graphe de Cleveland ?",
+    answer("Techniquement, aucune différence", correct = TRUE),
+    answer("Le graphe de Cleveland s'applique aux variables qualitatives plutôt que quantitatives", correct = TRUE)
+  )
+)
+```
+
+<!-- ## Univariée : indicateurs -->

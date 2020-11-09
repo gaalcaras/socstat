@@ -10,7 +10,7 @@ License: GNU GPLv3
 Encoding: UTF-8
 LazyData: true
 Imports:
-    learnr, tidyverse, here, ggplot2, janitor, glue, rmarkdown
+    learnr, tidyverse, here, ggplot2, janitor, glue, rmarkdown, viridis
 Suggests: 
     knitr, rlang, here
 VignetteBuilder: knitr
